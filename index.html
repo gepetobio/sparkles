@@ -1,0 +1,76 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width">
+
+	<style>
+		#canvas {
+			background: #000;
+		}
+	</style>
+
+	<script src="js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<script>
+		window.onload = function () {
+			var canvas = document.getElementById('canvas'),
+				c = canvas.getContext('2d'),
+				blobArray = [] ;
+			
+
+			setInterval(draw, 30);
+
+			function draw() {
+
+				var blob = {
+					x : 200,
+					y : 200,
+					size : 8,
+					xSpeed : randomRange(-10, 10),
+					ySpeed : randomRange(-10, 10)
+				};
+
+				blobArray.push(blob);
+
+				c.clearRect(0, 0, 400, 400);
+
+				for (var i = 0; i < blobArray.length; i++) {
+
+					blob = blobArray[i];
+
+					c.fillStyle = 'cyan';
+					c.fillRect(blob.x, blob.y, blob.size, blob.size);
+					
+					blob.x += blob.xSpeed;
+					blob.y += blob.ySpeed;
+					blob.size *= 0.96;
+					
+				}
+
+				
+			}
+
+			function randomRange(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+
+
+		};
+	</script>
+
+</body>
+</html>
