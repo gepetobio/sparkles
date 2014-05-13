@@ -16,6 +16,8 @@
 	<style>
 		#canvas {
 			background: #000;
+			float: left;
+			margin: 0 10px 10px 0;
 		}
 	</style>
 
@@ -26,9 +28,11 @@
 	<canvas id="canvas" width="400" height="400"></canvas>
 	<script>
 		window.onload = function () {
-			var canvas = document.getElementById('canvas'),
-				c = canvas.getContext('2d'),
-				blobArray = [] ;
+
+			// canvas 1
+			var canvas1 = document.getElementById('canvas'),
+				c = canvas1.getContext('2d'),
+				blobArray = [];
 			
 
 			setInterval(draw, 30);
@@ -39,8 +43,8 @@
 					x : 200,
 					y : 200,
 					size : 8,
-					xSpeed : randomRange(-10, 10),
-					ySpeed : randomRange(-10, 10)
+					xSpeed : randomRange(-8, 8),
+					ySpeed : randomRange(-8, 8)
 				};
 
 				blobArray.push(blob);
@@ -60,14 +64,13 @@
 					
 				}
 
-				
 			}
 
 			function randomRange(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
 
-
+			
 
 		};
 	</script>
